@@ -1,4 +1,4 @@
-# stylemug
+# stylemug ⚛️
 
 Write your styles as if they were part of your JS bundle, except for the fact that they are not.
 
@@ -68,7 +68,7 @@ module.exports = {
 };
 ```
 
-# Ideas
+## Yet to implement
 
 - Convert fontSize px to em by providing a `baseFontSizePx` property in the babel plugin.
 - Provide an API to abstract CSS variables.
