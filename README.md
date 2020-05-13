@@ -34,6 +34,8 @@ function App() {
 Include the compiler in your `webpack.config.js` config file.
 
 ```javascript
+const stylemugCompiler = require('stylemug/compiler');
+
 module.exports = {
   ...
   module: {
