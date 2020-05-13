@@ -1,0 +1,11 @@
+{
+  "name": "stylemug-compiler",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-syntax-jsx": "^7.8.3",
+    "babel-helper-evaluate-path": "^0.5.0",
+    "fnv1a": "^1.0.1"
+  }
+}

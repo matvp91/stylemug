@@ -1,0 +1,14 @@
+{
+  "name": "stylemug",
+  "version": "1.0.0",
+  "main": "dist/runtime.js",
+  "module": "src/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "stylemug-compiler": "^1.0.0"
+  },
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {}
+}
