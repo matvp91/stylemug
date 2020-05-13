@@ -1,6 +1,6 @@
 # stylemug ⚛️
 
-Write your styles as if they were part of your JS bundle, except for the fact that they are not.
+A fast css-in-js library that extracts atomic CSS rules to a .css file.
 
 1. A stylesheet is created with `stylemug.create({ ... })`.
 2. The `babel` plugin will compile each rule in each stylesheet to **atomic CSS**, as well as replacing the `styles` resolver with a hash map of rule identifiers for runtime lookup. No CSS is left in your JS bundle.
