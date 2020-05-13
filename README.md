@@ -61,3 +61,8 @@ module.exports = {
   ],
 };
 ```
+
+# Ideas
+
+- Convert fontSize px to em by providing a `baseFontSizePx` property in the babel plugin.
+- Provide an API to abstract CSS variables.
