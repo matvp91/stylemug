@@ -1,6 +1,6 @@
 # stylemug
 
-This is an experimental library, not yet ready to be used in production. Heavily inspired on `stylex` from Facebook.
+This is an experimental library, not yet ready to be used in production. Heavily inspired by Facebook's internal `stylex` and the [Building the new Facebook](https://developers.facebook.com/videos/2019/building-the-new-facebookcom-with-react-graphql-and-relay/) presentation, at ~28:00.
 
 ## Getting started
 
