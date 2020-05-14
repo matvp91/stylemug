@@ -1,8 +1,13 @@
 {
   "name": "stylemug",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/runtime.js",
   "license": "MIT",
+  "author": "Matthias Van Parijs",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/matvp91"
+  },
   "files": [
     "dist",
     "compiler.js"
@@ -14,5 +19,13 @@
   "devDependencies": {
     "rimraf": "^3.0.2",
     "stylemug-compiler": "^1.0.0"
-  }
+  },
+  "keywords": [
+    "css-in-js",
+    "atomic css",
+    "babel plugin",
+    "css",
+    "stylesheet",
+    "css in js"
+  ]
 }
