@@ -1,14 +1,16 @@
 const babel = require('@babel/core');
 const plugin = require('../babel');
 
-jest.mock('../compile', () => ({
-  compileSchema: () => ({
-    className: {
-      hash: {
-        keyId: 'id',
+jest.mock('stylemug-compiler', () => ({
+  compile: {
+    compileSchema: () => ({
+      className: {
+        hash: {
+          keyId: 'id',
+        },
       },
-    },
-  }),
+    }),
+  },
 }));
 
 describe('babel plugin', () => {

@@ -1,4 +1,4 @@
-const extractor = require('./extractor');
+const { extractor } = require('stylemug-compiler');
 const { RawSource } = require('webpack-sources');
 
 module.exports = class StylemPlugin {

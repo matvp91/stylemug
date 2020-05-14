@@ -36,7 +36,7 @@ function runtimeConfig({ mode }) {
 
 function compilerConfig() {
   return {
-    entry: 'stylemug-compiler',
+    entry: 'babel-stylemug-plugin',
     target: 'node',
     output: {
       libraryTarget: 'commonjs2',

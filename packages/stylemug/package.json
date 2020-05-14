@@ -24,7 +24,7 @@
     "build:compiler": "webpack --mode production --scope compiler"
   },
   "devDependencies": {
-    "stylemug-compiler": "^1.0.0"
+    "babel-stylemug-plugin": "^1.0.0"
   },
   "keywords": [
     "css-in-js",
