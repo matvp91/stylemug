@@ -37,7 +37,7 @@ describe('runtime', () => {
 
     it('should warn when a lookup failed', () => {
       const spy = jest.spyOn(console, 'warn');
-      const classNames = styles('unknown');
+      styles('unknown');
 
       expect(spy).toHaveBeenCalledWith(
         '[stylemug] The class name "unknown" does not exist in your stylesheet. Check your stylemug.create({}) definition.'
