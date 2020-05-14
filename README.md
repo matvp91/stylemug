@@ -8,6 +8,8 @@ A fast css-in-js library that extracts atomic CSS rules to a .css file.
 
 This is an experimental library, not yet ready to be used in production. Heavily inspired by Facebook's internal `stylex` and the "[Building the new Facebook](https://developers.facebook.com/videos/2019/building-the-new-facebookcom-with-react-graphql-and-relay/)" presentation, at ~28:00.
 
+Like it? ⭐ this repo.
+
 ## Getting started
 
 Use `stylemug.create` to write your style rules. It will return a resolver function in order to select your class names.
