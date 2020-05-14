@@ -19,3 +19,16 @@ jobs:
       run: yarn --frozen-lockfile
     - name: Run tests
       run: yarn test
+
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    needs: [tests]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '13.x'
+      - name: Build
+        run: scripts/build
+       
