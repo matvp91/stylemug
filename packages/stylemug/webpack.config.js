@@ -4,6 +4,7 @@ module.exports = [
   {
     entry: './src/index.js',
     output: {
+      libraryTarget: 'commonjs2',
       filename: 'runtime.js',
       path: path.resolve(__dirname, 'dist'),
     },
@@ -12,7 +13,6 @@ module.exports = [
     entry: 'stylemug-compiler',
     target: 'node',
     output: {
-      library: 'stylemugCompiler',
       libraryTarget: 'commonjs2',
       filename: 'compiler.js',
       path: __dirname,
