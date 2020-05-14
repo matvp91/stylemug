@@ -8,9 +8,11 @@
     "compiler.js"
   ],
   "scripts": {
-    "build": "webpack --mode production"
+    "clean": "rimraf dist && rimraf compiler.js",
+    "build": "yarn run clean && webpack --mode production"
   },
   "devDependencies": {
+    "rimraf": "^3.0.2",
     "stylemug-compiler": "^1.0.0"
   }
 }
