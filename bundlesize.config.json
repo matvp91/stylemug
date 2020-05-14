@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "path": "packages/stylemug/dist/runtime.js",
+      "maxSize": "600 B"
+    },
+    {
+      "path": "packages/stylemug/compiler.js",
+      "maxSize": "25 kB"
+    }
+  ]
+}
