@@ -17,7 +17,7 @@ describe('runtime', () => {
 
   it('should resolve multiple class names', () => {
     const classNames = styles('foo', 'bar');
-    expect(classNames).toBe('className1 className3');
+    expect(classNames).toBe('className3 className2');
   });
 
   it('should resolve falsy lookups (first arg)', () => {
