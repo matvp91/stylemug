@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`compile should compile nested media query 1`] = `
+Object {
+  "default": Object {
+    "c73de52f1": Object {
+      "children": "",
+      "key": "color",
+      "keyId": "caa38a5b5",
+      "media": "@media only screen and (max-width: 600px)",
+      "value": "blue",
+    },
+    "cb34cd11f": Object {
+      "children": "",
+      "key": "color",
+      "keyId": "c7d00640c",
+      "media": undefined,
+      "value": "red",
+    },
+  },
+}
+`;
+
+exports[`compile should compile nested selectors 1`] = `
+Object {
+  "default": Object {
+    "c2977468e": Object {
+      "children": ":focus",
+      "key": "color",
+      "keyId": "cecdb00be",
+      "media": undefined,
+      "value": "blue",
+    },
+    "cb34cd11f": Object {
+      "children": "",
+      "key": "color",
+      "keyId": "c7d00640c",
+      "media": undefined,
+      "value": "red",
+    },
+  },
+}
+`;
+
+exports[`compile should compile schema 1`] = `
+Object {
+  "bar": Object {
+    "cb34cd11f": Object {
+      "children": "",
+      "key": "color",
+      "keyId": "c7d00640c",
+      "media": undefined,
+      "value": "red",
+    },
+  },
+  "default": Object {
+    "b765dfa68": Object {
+      "children": "",
+      "key": "backgroundColor",
+      "keyId": "b1047a864",
+      "media": undefined,
+      "value": "yellow",
+    },
+    "cb34cd11f": Object {
+      "children": "",
+      "key": "color",
+      "keyId": "c7d00640c",
+      "media": undefined,
+      "value": "red",
+    },
+  },
+  "foo": Object {
+    "cf3f0b584": Object {
+      "children": "",
+      "key": "color",
+      "keyId": "c7d00640c",
+      "media": undefined,
+      "value": "blue",
+    },
+  },
+}
+`;
