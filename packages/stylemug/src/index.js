@@ -1,7 +1,7 @@
 export default {
   create(schema) {
-    const resolver = (...classNames) =>
-      Object.values(
+    const resolver = (...classNames) => {
+      return Object.values(
         Object.assign(
           {},
           ...classNames.map((className) => {
@@ -14,6 +14,7 @@ export default {
           })
         )
       ).join(' ');
+    };
 
     for (let key in schema) {
       resolver[key] = schema[key];

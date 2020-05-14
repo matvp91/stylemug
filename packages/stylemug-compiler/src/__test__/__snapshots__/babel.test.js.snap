@@ -1,8 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`babel plugin should replace create argument 1`] = `
-"import stylemug from 'stylemug';
-const styles = stylemug.create({
+"\\"use strict\\";
+
+var _stylemug = _interopRequireDefault(require(\\"stylemug\\"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const styles = _stylemug.default.create({
   className: {
     id: \\"hash\\"
   }
