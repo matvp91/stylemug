@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`babel plugin should replace create argument 1`] = `
+"import stylemug from 'stylemug';
+const styles = stylemug.create({
+  className: {
+    id: \\"hash\\"
+  }
+});"
+`;
