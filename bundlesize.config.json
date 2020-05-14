@@ -1,11 +1,11 @@
 {
   "files": [
     {
-      "path": "packages/stylemug/dist/runtime.js",
+      "path": "packages/stylemug/dist/index.prod.js",
       "maxSize": "1 kB"
     },
     {
-      "path": "packages/stylemug/compiler.js",
+      "path": "packages/stylemug/dist/compiler.js",
       "maxSize": "25 kB"
     }
   ]

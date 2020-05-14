@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const stylemugCompiler = require('stylemug-compiler');
@@ -22,7 +23,16 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    alias: {
+      // Directly import the runtime during development.
+      stylemug: 'stylemug/src',
+    },
+  },
   plugins: [
+    new webpack.DefinePlugin({
+      __DEV__: JSON.stringify(true),
+    }),
     new stylemugCompiler.webpack({
       name: 'bundle.css',
     }),

@@ -1,2 +1,3 @@
 compiler.js
-dist
+dist/*
+!dist/index.js

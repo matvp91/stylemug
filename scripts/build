@@ -2,7 +2,7 @@
 
 const spawn = require('child_process').spawnSync;
 const path = require('path');
-const fs = require('fs')
+const fs = require('fs');
 
 const BASE_PATH = path.resolve('./packages/stylemug');
 
@@ -21,7 +21,9 @@ spawn('yarn', ['build'], {
   cwd: BASE_PATH,
 });
 
-assertFile('compiler.js');
-assertFile('dist/runtime.js');
+assertFile('dist/compiler.js');
+assertFile('dist/index.prod.js');
+assertFile('dist/index.dev.js');
+assertFile('dist/index.js');
 
 console.log('🥳');

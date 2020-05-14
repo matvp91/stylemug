@@ -1,7 +1,7 @@
 {
   "name": "stylemug",
   "version": "1.0.7",
-  "main": "dist/runtime.js",
+  "main": "dist/index.js",
   "homepage": "https://github.com/matvp91/stylemug",
   "license": "MIT",
   "author": "Matthias Van Parijs",
@@ -18,11 +18,12 @@
     "compiler.js"
   ],
   "scripts": {
-    "clean": "rimraf dist && rimraf compiler.js",
-    "build": "yarn run clean && webpack --mode production"
+    "build": "yarn run build:prod && yarn run build:dev && yarn run build:compiler",
+    "build:prod": "webpack --mode production --scope runtime",
+    "build:dev": "webpack --mode development --scope runtime",
+    "build:compiler": "webpack --mode production --scope compiler"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2",
     "stylemug-compiler": "^1.0.0"
   },
   "keywords": [

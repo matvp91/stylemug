@@ -29,4 +29,21 @@ describe('runtime', () => {
     const classNames = styles('foo', false && 'bar');
     expect(classNames).toBe('className1 className2');
   });
+
+  describe('warnings', () => {
+    beforeEach(() => {
+      global.console.warn = jest.fn();
+    });
+
+    it('should warn when a lookup failed', () => {
+      const spy = jest.spyOn(console, 'warn');
+      const classNames = styles('unknown');
+
+      expect(spy).toHaveBeenCalledWith(
+        '[stylemug] The class name "unknown" does not exist in your stylesheet. Check your stylemug.create({}) definition.'
+      );
+
+      spy.mockRestore();
+    });
+  });
 });

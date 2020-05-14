@@ -23,7 +23,14 @@ function App() {
   }
 
   return (
-    <div className={styles('default', dark && 'dark', globals.container)}>
+    <div
+      className={styles(
+        'nonexist',
+        'default',
+        dark && 'dark',
+        globals.container
+      )}
+    >
       <button onClick={onClick}>Dark mode: {dark ? 'off' : 'on'}</button>
       <Component1 />
     </div>
