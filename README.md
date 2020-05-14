@@ -1,6 +1,12 @@
-# stylemug
+# stylemug ⚛️
 
-This is an experimental library, not yet ready to be used in production. Heavily inspired on `stylex` from Facebook.
+A fast css-in-js library that extracts atomic CSS rules to a .css file.
+
+1. A stylesheet is created with `stylemug.create({ ... })`.
+2. The `babel` plugin will compile each rule in each stylesheet to **atomic CSS**, as well as replacing the `styles` resolver with a hash map of rule identifiers for runtime lookup. No CSS is left in your JS bundle.
+3. The `webpack` plugin writes the extracted rules **to a .css file**, producing an optimized and tiny bundle.
+
+This is an experimental library, not yet ready to be used in production. Heavily inspired by Facebook's internal `stylex` and the "[Building the new Facebook](https://developers.facebook.com/videos/2019/building-the-new-facebookcom-with-react-graphql-and-relay/)" presentation, at ~28:00.
 
 ## Getting started
 
@@ -61,3 +67,8 @@ module.exports = {
   ],
 };
 ```
+
+## Yet to implement
+
+- Convert fontSize px to em by providing a `baseFontSizePx` property in the babel plugin.
+- Provide an API to abstract CSS variables.
