@@ -1,6 +1,6 @@
 {
   "name": "stylemug",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/runtime.js",
   "module": "src/index.js",
   "license": "MIT",
