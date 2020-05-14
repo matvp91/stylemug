@@ -4,6 +4,10 @@
   "main": "dist/runtime.js",
   "module": "src/index.js",
   "license": "MIT",
+  "files": [
+    "dist",
+    "compiler.js"
+  ],
   "scripts": {
     "build": "webpack --mode production"
   },
