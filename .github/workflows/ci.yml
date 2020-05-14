@@ -29,6 +29,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '13.x'
+      - name: Install dependencies
+        run: yarn --frozen-lockfile  
       - name: Build
         run: scripts/build
        
