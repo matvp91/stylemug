@@ -22,7 +22,7 @@ function flushAsCss() {
   for (let className in cache) {
     rules.push(createRule(className, cache[className]));
   }
-  return rules.join('\n');
+  return rules.join('');
 }
 
 module.exports = {
