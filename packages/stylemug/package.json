@@ -1,6 +1,6 @@
 {
   "name": "stylemug",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "dist/index.js",
   "homepage": "https://github.com/matvp91/stylemug",
   "license": "MIT",
