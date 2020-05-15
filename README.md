@@ -12,7 +12,7 @@ We try to limit the functionality of this package in order to do the following k
 - The compiled rules are **extracted to a .css file**.
 - The stylesheet code in your bundle is replaced (**no CSS in your JS**) with a hash map for classnames lookup at runtime.
 
-This is an experimental library, not yet ready to be used in production. Heavily inspired by Facebook's internal `stylex` and the "[Building the new Facebook](https://developers.facebook.com/videos/2019/building-the-new-facebookcom-with-react-graphql-and-relay/)" presentation, at ~28:00.
+Heavily inspired by Facebook's internal `stylex` and the "[Building the new Facebook](https://developers.facebook.com/videos/2019/building-the-new-facebookcom-with-react-graphql-and-relay/)" presentation, at ~28:00.
 
 ## Getting started
 
