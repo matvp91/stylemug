@@ -84,7 +84,7 @@ module.exports = {
 
 ## Features
 
-### Composition
+### Generic rules
 
 A style rule can be shared from one file to another, aslong as the stylesheet itself remains static.
 
