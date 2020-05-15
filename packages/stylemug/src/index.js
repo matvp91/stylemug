@@ -4,11 +4,10 @@ const noop = () => {};
 
 export default {
   create(schema, error) {
-    if (__DEV__ && error) {
-      warn(error);
-    }
-
     if (error) {
+      if (__DEV__) {
+        warn(error);
+      }
       return noop;
     }
 
