@@ -31,4 +31,23 @@ describe('babel plugin', () => {
 
     expect(code).toMatchSnapshot();
   });
+
+  it('should error when failed to resolve', () => {
+    const example = `
+      import stylemug from 'stylemug';
+      import { selector } from './mock';
+
+      const styles = stylemug.create({
+        [selector]: {
+          color: 'red',
+        },
+      });
+    `;
+
+    const { code } = babel.transform(example, {
+      plugins: [plugin],
+    });
+
+    expect(code).toMatchSnapshot();
+  });
 });

@@ -1,7 +1,17 @@
 import warn from './warn';
 
+const noop = () => {};
+
 export default {
-  create(schema) {
+  create(schema, error) {
+    if (__DEV__ && error) {
+      warn(error);
+    }
+
+    if (error) {
+      return noop;
+    }
+
     const resolver = (...classNames) => {
       const maps = [{}];
 

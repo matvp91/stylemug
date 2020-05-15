@@ -5,6 +5,12 @@ const { compile, extractor } = require('stylemug-compiler');
 module.exports = function stylemugBabelPlugin(babel) {
   const t = babel.types;
 
+  function defineError(path, msg) {
+    const node = t.cloneDeep(path.node);
+    node.arguments[1] = t.stringLiteral(msg);
+    path.replaceWith(node);
+  }
+
   return {
     name: 'stylemug/babel',
     inherits: jsx,
@@ -26,6 +32,13 @@ module.exports = function stylemugBabelPlugin(babel) {
 
         let sheet = evaluateSimple(local.get('arguments')[0]);
         if (!sheet.confident) {
+          defineError(
+            local,
+            'Failed to evaluate the following stylesheet: \n\n' +
+              local.toString() +
+              '\n\n' +
+              'Make sure your stylesheet is statically defined.'
+          );
           return;
         }
         sheet = compile.compileSchema(sheet.value, extractor);

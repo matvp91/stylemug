@@ -18,6 +18,14 @@ describe('compile', () => {
     expect(result).toMatchSnapshot();
   });
 
+  it('should compile selectors with number as value', () => {
+    const result = compile.compileSelectors({
+      fontSize: 12,
+    });
+
+    expect(result).toMatchSnapshot();
+  });
+
   it('should compile nested selectors', () => {
     const result = compile.compileSchema({
       default: {

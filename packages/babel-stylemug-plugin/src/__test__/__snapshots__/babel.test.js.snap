@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`babel plugin should error when failed to resolve 1`] = `
+"\\"use strict\\";
+
+var _stylemug = _interopRequireDefault(require(\\"stylemug\\"));
+
+var _mock = require(\\"./mock\\");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const styles = _stylemug.default.create({
+  [_mock.selector]: {
+    color: 'red'
+  }
+}, \\"Failed to evaluate the following stylesheet: \\\\n\\\\nstylemug.create({\\\\n  [selector]: {\\\\n    color: 'red'\\\\n  }\\\\n})\\\\n\\\\nMake sure your stylesheet is statically defined.\\");"
+`;
+
 exports[`babel plugin should replace create argument 1`] = `
 "\\"use strict\\";
 

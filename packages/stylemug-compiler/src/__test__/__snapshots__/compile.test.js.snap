@@ -80,3 +80,15 @@ Object {
   },
 }
 `;
+
+exports[`compile should compile selectors with number as value 1`] = `
+Object {
+  "f8eb48ce2": Object {
+    "children": undefined,
+    "key": "fontSize",
+    "keyId": "f366f92b5",
+    "media": undefined,
+    "value": 12,
+  },
+}
+`;

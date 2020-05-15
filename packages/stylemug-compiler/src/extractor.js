@@ -7,6 +7,10 @@ function save(className, rule) {
   cache[className] = rule;
 }
 
+function clear() {
+  cache = {};
+}
+
 function hyphenate(str) {
   return str.replace(/[A-Z]|^ms/g, '-$&').toLowerCase();
 }
@@ -22,10 +26,13 @@ function flushAsCss() {
   for (let className in cache) {
     rules.push(createRule(className, cache[className]));
   }
+  clear();
   return rules.join('');
 }
 
 module.exports = {
+  clear,
   save,
   flushAsCss,
+  createRule,
 };
