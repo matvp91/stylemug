@@ -1,26 +1,26 @@
-const extractor = require('../extractor');
+import { flushAsCss, createRule, save } from '../extractor';
 
 describe('extractor', () => {
   it('should generate basic css', () => {
-    extractor.save('a', {
+    save('a', {
       key: 'color',
       value: 'red',
       children: '',
       media: null,
     });
 
-    extractor.save('b', {
+    save('b', {
       key: 'color',
       value: 'blue',
       children: ':hover',
       media: null,
     });
 
-    expect(extractor.flushAsCss()).toMatchSnapshot();
+    expect(flushAsCss()).toMatchSnapshot();
   });
 
   it('should hyphenate keys', () => {
-    const rule = extractor.createRule('a', {
+    const rule = createRule('a', {
       key: 'fontSize',
       value: 16,
       children: '',

@@ -1,13 +1,13 @@
-const fnva1 = require('fnv1a');
-const extractor = require('./extractor');
+import fnv1a from 'fnv1a';
+import { save as extractorSave } from './extractor';
 
 function hash(str) {
-  let hash = fnva1(str).toString(16);
+  let hash = fnv1a(str).toString(16);
   const prepend = str.match(/[a-zA-Z]/).pop() || 'x';
   return `${prepend}${hash}`;
 }
 
-function compileSelectors(selectors, children, media) {
+export function compileSelectors(selectors, children, media) {
   let result = {};
 
   for (let key in selectors) {
@@ -47,7 +47,7 @@ function compileSelectors(selectors, children, media) {
           media,
         };
 
-        extractor.save(className, entry);
+        extractorSave(className, entry);
 
         result[className] = entry;
         continue;
@@ -57,7 +57,7 @@ function compileSelectors(selectors, children, media) {
   return result;
 }
 
-function compileSchema(schema) {
+export function compileSchema(schema) {
   const result = {};
 
   for (let key in schema) {
@@ -66,8 +66,3 @@ function compileSchema(schema) {
 
   return result;
 }
-
-module.exports = {
-  compileSchema,
-  compileSelectors,
-};

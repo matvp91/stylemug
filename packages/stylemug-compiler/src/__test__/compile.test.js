@@ -1,8 +1,8 @@
-const compile = require('../compile');
+import { compileSchema, compileSelectors } from '../compile';
 
 describe('compile', () => {
   it('should compile schema', () => {
-    const result = compile.compileSchema({
+    const result = compileSchema({
       default: {
         color: 'red',
         backgroundColor: 'yellow',
@@ -19,7 +19,7 @@ describe('compile', () => {
   });
 
   it('should compile selectors with number as value', () => {
-    const result = compile.compileSelectors({
+    const result = compileSelectors({
       fontSize: 12,
     });
 
@@ -27,7 +27,7 @@ describe('compile', () => {
   });
 
   it('should compile nested selectors', () => {
-    const result = compile.compileSchema({
+    const result = compileSchema({
       default: {
         color: 'red',
 
@@ -41,7 +41,7 @@ describe('compile', () => {
   });
 
   it('should compile nested media query', () => {
-    const result = compile.compileSchema({
+    const result = compileSchema({
       default: {
         color: 'red',
 

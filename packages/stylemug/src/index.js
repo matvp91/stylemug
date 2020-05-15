@@ -2,19 +2,20 @@
 
 declare var __DEV__: string;
 
+import type { SchemaMap } from 'stylemug-compiler';
 import warn from './warn';
 
 const noop = () => {};
 
+type ResolverArgs = $ReadOnlyArray<
+  | string
+  | {|
+      [keyId: string]: string,
+    |}
+>;
+
 export default {
-  create(
-    schema: {
-      [className: string]: {
-        [keyId: string]: string,
-      },
-    },
-    error: string
-  ) {
+  create(schema: SchemaMap, error: string) {
     if (error) {
       if (__DEV__) {
         warn(error);
@@ -22,14 +23,7 @@ export default {
       return noop;
     }
 
-    const resolver = (
-      ...classNames: $ReadOnlyArray<
-        | string
-        | {
-            [keyId: string]: string,
-          }
-      >
-    ) => {
+    const resolver = (...classNames: ResolverArgs) => {
       const maps = [{}];
 
       const len = classNames.length;

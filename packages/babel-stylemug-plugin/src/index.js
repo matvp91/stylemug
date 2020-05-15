@@ -1,7 +1,2 @@
-const babel = require('./babel');
-const webpack = require('./webpack');
-
-module.exports = {
-  babel,
-  webpack,
-};
+export { StylemugPlugin as webpack } from './webpack';
+export { babelPlugin as babel } from './babel';

@@ -1,7 +1,9 @@
-const extractor = require('./extractor');
-const compile = require('./compile');
+export { compileSchema } from './compile';
 
-module.exports = {
-  extractor,
-  compile,
-};
+export { flushAsCss } from './extractor';
+
+export type SchemaMap = {|
+  [className: string]: {|
+    [keyId: string]: string,
+  |},
+|};

@@ -1,16 +1,14 @@
-const babel = require('@babel/core');
-const plugin = require('../babel');
+import { transform } from '@babel/core';
+import { babelPlugin as plugin } from '../babel';
 
 jest.mock('stylemug-compiler', () => ({
-  compile: {
-    compileSchema: () => ({
-      className: {
-        hash: {
-          keyId: 'id',
-        },
+  compileSchema: () => ({
+    className: {
+      hash: {
+        keyId: 'id',
       },
-    }),
-  },
+    },
+  }),
 }));
 
 describe('babel plugin', () => {
@@ -25,7 +23,7 @@ describe('babel plugin', () => {
       });
     `;
 
-    const { code } = babel.transform(example, {
+    const { code } = transform(example, {
       plugins: [plugin],
     });
 
@@ -44,7 +42,7 @@ describe('babel plugin', () => {
       });
     `;
 
-    const { code } = babel.transform(example, {
+    const { code } = transform(example, {
       plugins: [plugin],
     });
 
