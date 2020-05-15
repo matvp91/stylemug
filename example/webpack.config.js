@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const stylemugBabelPlugin = require('babel-stylemug-plugin');
+const stylemugBabelPlugin = require('stylemug/compiler');
 
 module.exports = {
   entry: './src/index.js',
@@ -23,16 +23,7 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    alias: {
-      // Directly import the runtime during development.
-      stylemug: 'stylemug/src',
-    },
-  },
   plugins: [
-    new webpack.DefinePlugin({
-      __DEV__: JSON.stringify(true),
-    }),
     new stylemugBabelPlugin.webpack({
       name: 'bundle.css',
     }),

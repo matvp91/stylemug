@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`runtime resolver should expose classnames as properties on resolver 1`] = `
+Array [
+  Object {
+    "key1": "className1",
+    "key2": "className2",
+  },
+  Object {
+    "key1": "className3",
+  },
+]
+`;

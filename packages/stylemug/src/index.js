@@ -1,9 +1,20 @@
+// @flow
+
+declare var __DEV__: string;
+
 import warn from './warn';
 
 const noop = () => {};
 
 export default {
-  create(schema, error) {
+  create(
+    schema: {
+      [className: string]: {
+        [keyId: string]: string,
+      },
+    },
+    error: string
+  ) {
     if (error) {
       if (__DEV__) {
         warn(error);
@@ -11,7 +22,14 @@ export default {
       return noop;
     }
 
-    const resolver = (...classNames) => {
+    const resolver = (
+      ...classNames: $ReadOnlyArray<
+        | string
+        | {
+            [keyId: string]: string,
+          }
+      >
+    ) => {
       const maps = [{}];
 
       const len = classNames.length;
@@ -20,13 +38,10 @@ export default {
         if (!className) {
           continue;
         }
-
-        const type = typeof className;
-
-        if (type === 'object') {
+        if (typeof className === 'object') {
           maps.push(className);
         }
-        if (type === 'string') {
+        if (typeof className === 'string') {
           if (__DEV__ && !schema[className]) {
             warn(
               'The class name "' +
@@ -39,7 +54,7 @@ export default {
         }
       }
 
-      return Object.values(Object.assign(...maps)).join(' ');
+      return Object.values(Object.assign.apply(null, maps)).join(' ');
     };
 
     for (let key in schema) {
