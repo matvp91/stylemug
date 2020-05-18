@@ -1,9 +1,21 @@
+// @flow
+
+declare var __DEV__: string;
+
+import type { SchemaMap } from 'stylemug-compiler';
 import warn from './warn';
 
 const noop = () => {};
 
+type ResolverArgs = $ReadOnlyArray<
+  | string
+  | {|
+      [keyId: string]: string,
+    |}
+>;
+
 export default {
-  create(schema, error) {
+  create(schema: SchemaMap, error: string) {
     if (error) {
       if (__DEV__) {
         warn(error);
@@ -11,7 +23,7 @@ export default {
       return noop;
     }
 
-    const resolver = (...classNames) => {
+    const resolver = (...classNames: ResolverArgs) => {
       const maps = [{}];
 
       const len = classNames.length;
@@ -20,13 +32,10 @@ export default {
         if (!className) {
           continue;
         }
-
-        const type = typeof className;
-
-        if (type === 'object') {
+        if (typeof className === 'object') {
           maps.push(className);
         }
-        if (type === 'string') {
+        if (typeof className === 'string') {
           if (__DEV__ && !schema[className]) {
             warn(
               'The class name "' +
@@ -39,7 +48,7 @@ export default {
         }
       }
 
-      return Object.values(Object.assign(...maps)).join(' ');
+      return Object.values(Object.assign.apply(null, maps)).join(' ');
     };
 
     for (let key in schema) {

@@ -1,8 +1,8 @@
-const jsx = require('@babel/plugin-syntax-jsx').default;
-const evaluateSimple = require('babel-helper-evaluate-path');
-const { compile, extractor } = require('stylemug-compiler');
+import jsx from '@babel/plugin-syntax-jsx';
+import evaluateSimple from 'babel-helper-evaluate-path';
+import { compileSchema } from 'stylemug-compiler';
 
-module.exports = function stylemugBabelPlugin(babel) {
+export function babelPlugin(babel) {
   const t = babel.types;
 
   function defineError(path, msg) {
@@ -41,7 +41,7 @@ module.exports = function stylemugBabelPlugin(babel) {
           );
           return;
         }
-        sheet = compile.compileSchema(sheet.value, extractor);
+        sheet = compileSchema(sheet.value);
 
         const nextLocal = t.cloneDeep(local.node);
         nextLocal.arguments[0] = t.objectExpression(
@@ -64,4 +64,4 @@ module.exports = function stylemugBabelPlugin(babel) {
       },
     },
   };
-};
+}

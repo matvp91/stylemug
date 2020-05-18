@@ -7,13 +7,13 @@ var _stylemug = _interopRequireDefault(require(\\"stylemug\\"));
 
 var _mock = require(\\"./mock\\");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \\"default\\": obj }; }
 
-const styles = _stylemug.default.create({
-  [_mock.selector]: {
-    color: 'red'
-  }
-}, \\"Failed to evaluate the following stylesheet: \\\\n\\\\nstylemug.create({\\\\n  [selector]: {\\\\n    color: 'red'\\\\n  }\\\\n})\\\\n\\\\nMake sure your stylesheet is statically defined.\\");"
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var styles = _stylemug[\\"default\\"].create(_defineProperty({}, _mock.selector, {
+  color: 'red'
+}), \\"Failed to evaluate the following stylesheet: \\\\n\\\\nstylemug.create({\\\\n  [selector]: {\\\\n    color: 'red'\\\\n  }\\\\n})\\\\n\\\\nMake sure your stylesheet is statically defined.\\");"
 `;
 
 exports[`babel plugin should replace create argument 1`] = `
@@ -21,9 +21,9 @@ exports[`babel plugin should replace create argument 1`] = `
 
 var _stylemug = _interopRequireDefault(require(\\"stylemug\\"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \\"default\\": obj }; }
 
-const styles = _stylemug.default.create({
+var styles = _stylemug[\\"default\\"].create({
   className: {
     id: \\"hash\\"
   }

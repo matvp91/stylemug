@@ -1,16 +1,16 @@
-const { extractor } = require('stylemug-compiler');
-const { RawSource } = require('webpack-sources');
+import { flushAsCss } from 'stylemug-compiler';
+import { RawSource } from 'webpack-sources';
 
-module.exports = class StylemPlugin {
+export class StylemugPlugin {
   constructor(options) {
     this.options = options;
   }
 
   apply(compiler) {
     compiler.plugin('emit', (compilation, cb) => {
-      const css = extractor.flushAsCss();
+      const css = flushAsCss();
       compilation.assets[this.options.name] = new RawSource(css);
       cb();
     });
   }
-};
+}
