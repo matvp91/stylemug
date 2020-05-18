@@ -1,5 +1,6 @@
 import fnv1a from 'fnv1a';
 import { save as extractorSave } from './extractor';
+import { extractShorthands } from './shorthands';
 
 function hash(str) {
   let hash = fnv1a(str).toString(16);
@@ -10,6 +11,8 @@ function hash(str) {
 
 export function compileSelectors(selectors, children, media) {
   let result = {};
+
+  selectors = extractShorthands(selectors);
 
   for (let key in selectors) {
     const value = selectors[key];

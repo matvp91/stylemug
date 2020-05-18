@@ -6,12 +6,8 @@ import globals from './globals';
 
 const styles = stylemug.create({
   default: {
-    '--color': 'black',
-    '--bg-color': 'white',
-  },
-  dark: {
-    '--color': 'white',
-    '--bg-color': 'black',
+    border: '5px solid red',
+    color: 'green',
   },
 });
 
