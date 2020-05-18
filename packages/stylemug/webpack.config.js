@@ -22,7 +22,12 @@ function runtimeConfig({ mode }) {
         {
           test: /\.m?js$/,
           exclude: /(node_modules|bower_components)/,
-          use: 'babel-loader',
+          use: {
+            loader: 'babel-loader',
+            options: {
+              rootMode: 'upward',
+            },
+          },
         },
       ],
     },
@@ -42,6 +47,20 @@ function compilerConfig() {
       libraryTarget: 'commonjs2',
       filename: 'compiler.js',
       path: path.resolve(__dirname, 'dist'),
+    },
+    module: {
+      rules: [
+        {
+          test: /\.m?js$/,
+          exclude: /(node_modules|bower_components)/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              rootMode: 'upward',
+            },
+          },
+        },
+      ],
     },
   };
 }

@@ -13,7 +13,7 @@ Object {
     "cb34cd11f": Object {
       "children": "",
       "key": "color",
-      "keyId": "c7d00640c",
+      "keyId": "c3d7e6258",
       "media": undefined,
       "value": "red",
     },
@@ -27,14 +27,14 @@ Object {
     "c2977468e": Object {
       "children": ":focus",
       "key": "color",
-      "keyId": "cecdb00be",
+      "keyId": "cc8e550a",
       "media": undefined,
       "value": "blue",
     },
     "cb34cd11f": Object {
       "children": "",
       "key": "color",
-      "keyId": "c7d00640c",
+      "keyId": "c3d7e6258",
       "media": undefined,
       "value": "red",
     },
@@ -48,7 +48,7 @@ Object {
     "cb34cd11f": Object {
       "children": "",
       "key": "color",
-      "keyId": "c7d00640c",
+      "keyId": "c3d7e6258",
       "media": undefined,
       "value": "red",
     },
@@ -57,14 +57,14 @@ Object {
     "b765dfa68": Object {
       "children": "",
       "key": "backgroundColor",
-      "keyId": "b1047a864",
+      "keyId": "bb7c5a6d0",
       "media": undefined,
       "value": "yellow",
     },
     "cb34cd11f": Object {
       "children": "",
       "key": "color",
-      "keyId": "c7d00640c",
+      "keyId": "c3d7e6258",
       "media": undefined,
       "value": "red",
     },
@@ -73,7 +73,7 @@ Object {
     "cf3f0b584": Object {
       "children": "",
       "key": "color",
-      "keyId": "c7d00640c",
+      "keyId": "c3d7e6258",
       "media": undefined,
       "value": "blue",
     },
@@ -86,7 +86,7 @@ Object {
   "f8eb48ce2": Object {
     "children": undefined,
     "key": "fontSize",
-    "keyId": "f366f92b5",
+    "keyId": "f2951bd7",
     "media": undefined,
     "value": 12,
   },

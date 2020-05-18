@@ -37,6 +37,10 @@ describe('runtime', () => {
       const classNames = styles('foo', false && 'bar');
       expect(classNames).toBe('className1 className2');
     });
+
+    it('should expose classnames as properties on resolver', () => {
+      expect([styles.foo, styles.bar]).toMatchSnapshot();
+    });
   });
 
   describe('resolver warnings', () => {

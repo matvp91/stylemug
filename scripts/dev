@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+const spawn = require('child_process').spawnSync;
+const path = require('path');
+
+spawn('scripts/build', {
+  stdio: 'inherit',
+});
+
+spawn('yarn', ['start'], {
+  stdio: 'inherit',
+  cwd: path.resolve('./example'),
+});
