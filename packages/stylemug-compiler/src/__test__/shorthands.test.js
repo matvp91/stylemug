@@ -19,6 +19,19 @@ describe('merge', () => {
     expect(style).toMatchSnapshot();
   });
 
+  it.each([
+    ['padding', { padding: '1px 2px' }, { paddingTop: '10px' }],
+    ['margin', { margin: '1px 2px' }, { marginTop: '10px' }],
+  ])('should override defined shorthands for %s', (name, prop1, prop2) => {
+    const style = extractShorthands({ ...prop1, ...prop2 });
+    expect(style).toMatchSnapshot();
+
+    const styleReversed = extractShorthands({ ...prop2, ...prop1 });
+    expect(styleReversed).toMatchSnapshot();
+
+    expect(style).toEqual(styleReversed);
+  });
+
   it('should expand flex', () => {
     expect(
       extractShorthands({

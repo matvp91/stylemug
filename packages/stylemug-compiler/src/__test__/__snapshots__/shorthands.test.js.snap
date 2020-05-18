@@ -139,6 +139,42 @@ Object {
 }
 `;
 
+exports[`merge should override defined shorthands for margin 1`] = `
+Object {
+  "marginBottom": "1px",
+  "marginLeft": "2px",
+  "marginRight": "2px",
+  "marginTop": "10px",
+}
+`;
+
+exports[`merge should override defined shorthands for margin 2`] = `
+Object {
+  "marginBottom": "1px",
+  "marginLeft": "2px",
+  "marginRight": "2px",
+  "marginTop": "10px",
+}
+`;
+
+exports[`merge should override defined shorthands for padding 1`] = `
+Object {
+  "paddingBottom": "1px",
+  "paddingLeft": "2px",
+  "paddingRight": "2px",
+  "paddingTop": "10px",
+}
+`;
+
+exports[`merge should override defined shorthands for padding 2`] = `
+Object {
+  "paddingBottom": "1px",
+  "paddingLeft": "2px",
+  "paddingRight": "2px",
+  "paddingTop": "10px",
+}
+`;
+
 exports[`merge should parse a mix of var and calc 1`] = `
 Object {
   "marginBottom": "calc(100% - var(--foo))",
