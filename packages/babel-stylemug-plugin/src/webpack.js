@@ -1,4 +1,4 @@
-import { flushAsCss } from 'stylemug-compiler';
+import { extractCss } from 'stylemug-compiler';
 import { RawSource } from 'webpack-sources';
 
 export class StylemugPlugin {
@@ -8,7 +8,7 @@ export class StylemugPlugin {
 
   apply(compiler) {
     compiler.hooks.emit.tapAsync('StylemugEmit', (compilation, cb) => {
-      const css = flushAsCss();
+      const css = extractCss();
       compilation.assets[this.options.name] = new RawSource(css);
       cb();
     });

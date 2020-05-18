@@ -1,4 +1,4 @@
-import { flushAsCss, createRule, save } from '../extractor';
+import { extractCss, createRule, save } from '../extractor';
 
 describe('extractor', () => {
   it('should generate basic css', () => {
@@ -16,7 +16,7 @@ describe('extractor', () => {
       media: null,
     });
 
-    expect(flushAsCss()).toMatchSnapshot();
+    expect(extractCss()).toMatchSnapshot();
   });
 
   it('should hyphenate keys', () => {
