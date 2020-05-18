@@ -1,21 +1,9 @@
-// @flow
-
-declare var __DEV__: string;
-
-import type { SchemaMap } from 'stylemug-compiler';
 import warn from './warn';
 
 const noop = () => {};
 
-type ResolverArgs = $ReadOnlyArray<
-  | string
-  | {|
-      [keyId: string]: string,
-    |}
->;
-
 export default {
-  create(schema: SchemaMap, error: string) {
+  create(schema, error) {
     if (error) {
       if (__DEV__) {
         warn(error);
@@ -23,7 +11,7 @@ export default {
       return noop;
     }
 
-    const resolver = (...classNames: ResolverArgs) => {
+    const resolver = (...classNames) => {
       const maps = [{}];
 
       const len = classNames.length;

@@ -20,20 +20,6 @@ jobs:
       - name: Run tests
         run: yarn jest
 
-  types:
-    runs-on: ubuntu-latest
-    name: Types
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '13.x'
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
-      - name: Run type checks
-        run: yarn flow
-
   build:
     runs-on: ubuntu-latest
     name: Build
