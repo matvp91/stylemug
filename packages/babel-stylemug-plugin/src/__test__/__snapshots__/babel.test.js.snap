@@ -29,3 +29,23 @@ var styles = _stylemug[\\"default\\"].create({
   }
 });"
 `;
+
+exports[`babel plugin should replace create argument multiple times in the same file 1`] = `
+"\\"use strict\\";
+
+var _stylemug = _interopRequireDefault(require(\\"stylemug\\"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \\"default\\": obj }; }
+
+var styles1 = _stylemug[\\"default\\"].create({
+  className: {
+    id: \\"hash\\"
+  }
+});
+
+var styles2 = _stylemug[\\"default\\"].create({
+  className: {
+    id: \\"hash\\"
+  }
+});"
+`;

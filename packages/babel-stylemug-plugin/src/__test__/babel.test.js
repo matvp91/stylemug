@@ -48,4 +48,28 @@ describe('babel plugin', () => {
 
     expect(code).toMatchSnapshot();
   });
+
+  it('should replace create argument multiple times in the same file', () => {
+    const example = `
+      import stylemug from 'stylemug';
+
+      const styles1 = stylemug.create({
+        default: {
+          color: 'red',
+        },
+      });
+
+      const styles2 = stylemug.create({
+        default: {
+          color: 'blue',
+        },
+      });
+    `;
+
+    const { code } = transform(example, {
+      plugins: [plugin],
+    });
+
+    expect(code).toMatchSnapshot();
+  });
 });

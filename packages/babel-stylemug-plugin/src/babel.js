@@ -27,40 +27,45 @@ export function babelPlugin(babel) {
           return;
         }
 
-        const local = path.scope.getBinding(specifier.node.local.name)
-          .referencePaths[0].parentPath.parentPath;
+        const references = path.scope.getBinding(specifier.node.local.name)
+          .referencePaths;
 
-        let sheet = evaluateSimple(local.get('arguments')[0]);
-        if (!sheet.confident) {
-          defineError(
-            local,
-            'Failed to evaluate the following stylesheet: \n\n' +
-              local.toString() +
-              '\n\n' +
-              'Make sure your stylesheet is statically defined.'
-          );
-          return;
-        }
-        sheet = compileSchema(sheet.value);
+        // Collect each stylemug.create({}) reference.
+        references.forEach((reference) => {
+          const local = reference.parentPath.parentPath;
 
-        const nextLocal = t.cloneDeep(local.node);
-        nextLocal.arguments[0] = t.objectExpression(
-          Object.entries(sheet).map(([name, rules]) => {
-            return t.objectProperty(
-              t.identifier(name),
-              t.objectExpression(
-                Object.entries(rules).map(([hash, rule]) => {
-                  return t.objectProperty(
-                    t.identifier(rule.keyId),
-                    t.stringLiteral(hash)
-                  );
-                })
-              )
+          let sheet = evaluateSimple(local.get('arguments')[0]);
+          if (!sheet.confident) {
+            defineError(
+              local,
+              'Failed to evaluate the following stylesheet: \n\n' +
+                local.toString() +
+                '\n\n' +
+                'Make sure your stylesheet is statically defined.'
             );
-          })
-        );
+            return;
+          }
+          sheet = compileSchema(sheet.value);
 
-        local.replaceWith(nextLocal);
+          const nextLocal = t.cloneDeep(local.node);
+          nextLocal.arguments[0] = t.objectExpression(
+            Object.entries(sheet).map(([name, rules]) => {
+              return t.objectProperty(
+                t.identifier(name),
+                t.objectExpression(
+                  Object.entries(rules).map(([hash, rule]) => {
+                    return t.objectProperty(
+                      t.identifier(rule.keyId),
+                      t.stringLiteral(hash)
+                    );
+                  })
+                )
+              );
+            })
+          );
+
+          local.replaceWith(nextLocal);
+        });
       },
     },
   };
