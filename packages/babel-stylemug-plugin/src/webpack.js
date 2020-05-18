@@ -7,7 +7,7 @@ export class StylemugPlugin {
   }
 
   apply(compiler) {
-    compiler.plugin('emit', (compilation, cb) => {
+    compiler.hooks.emit.tapAsync('StylemugEmit', (compilation, cb) => {
       const css = flushAsCss();
       compilation.assets[this.options.name] = new RawSource(css);
       cb();
