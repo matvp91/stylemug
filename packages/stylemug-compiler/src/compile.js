@@ -9,6 +9,13 @@ function hash(str) {
   return `${prepend}${hash}`;
 }
 
+function throwError(message) {
+  throw {
+    $$type: 'compilerError',
+    message: message,
+  };
+}
+
 export function compileSelectors(selectors, children, media) {
   let result = {};
 
@@ -66,6 +73,14 @@ export function compileSchema(schema) {
   const result = {};
 
   for (let key in schema) {
+    if (typeof schema[key] !== 'object') {
+      throwError(
+        'Invalid schema. Expected className ' +
+          key +
+          ' to be object, but got ' +
+          typeof schema[key]
+      );
+    }
     result[key] = compileSelectors(schema[key], '');
   }
 

@@ -45,7 +45,20 @@ export function babelPlugin(babel) {
             );
             return;
           }
-          sheet = compileSchema(sheet.value);
+
+          try {
+            sheet = compileSchema(sheet.value);
+          } catch (error) {
+            defineError(
+              local,
+              error && error.$$type === 'compilerError'
+                ? error.message
+                : 'The compiler failed with an unknown error.\n' +
+                    'Would you be so kind to report the following error?\n\n' +
+                    error.toString()
+            );
+            return;
+          }
 
           const nextLocal = t.cloneDeep(local.node);
           nextLocal.arguments[0] = t.objectExpression(
