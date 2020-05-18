@@ -4,10 +4,6 @@ function hyphenate(str) {
   return str.replace(/[A-Z]|^ms/g, '-$&').toLowerCase();
 }
 
-function clear() {
-  cache = {};
-}
-
 export function save(className, rule) {
   if (cache[className]) {
     return;
@@ -21,11 +17,13 @@ export function createRule(className, { key, value, children, media }) {
   return !media ? rule : `${media}{${rule}}`;
 }
 
-export function flushAsCss() {
+export function extractCss(clearCache = false) {
   const rules = [];
   for (let className in cache) {
     rules.push(createRule(className, cache[className]));
   }
-  clear();
+  if (clearCache) {
+    cache = {};
+  }
   return rules.join('');
 }

@@ -1,7 +1,8 @@
 import stylemug from 'stylemug';
 
-export default stylemug.create({
+export const globalStyles = stylemug.create({
   container: {
-    width: 100,
+    maxWidth: '300px',
+    margin: '0 auto',
   },
 });

@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`merge expand circular margin with "1" in given stylesheet 1`] = `
+Object {
+  "marginBottom": "1",
+  "marginLeft": "1",
+  "marginRight": "1",
+  "marginTop": "1",
+}
+`;
+
+exports[`merge expand circular margin with "1px 2px 3px 4px" in given stylesheet 1`] = `
+Object {
+  "marginBottom": "3px",
+  "marginLeft": "4px",
+  "marginRight": "2px",
+  "marginTop": "1px",
+}
+`;
+
+exports[`merge expand circular margin with "1px 2px 3px" in given stylesheet 1`] = `
+Object {
+  "marginBottom": "3px",
+  "marginLeft": "2px",
+  "marginRight": "2px",
+  "marginTop": "1px",
+}
+`;
+
+exports[`merge expand circular margin with "1px 2px" in given stylesheet 1`] = `
+Object {
+  "marginBottom": "1px",
+  "marginLeft": "2px",
+  "marginRight": "2px",
+  "marginTop": "1px",
+}
+`;
+
+exports[`merge expand circular margin with "1px" in given stylesheet 1`] = `
+Object {
+  "marginBottom": "1px",
+  "marginLeft": "1px",
+  "marginRight": "1px",
+  "marginTop": "1px",
+}
+`;
+
+exports[`merge expand circular padding with "1" in given stylesheet 1`] = `
+Object {
+  "paddingBottom": "1",
+  "paddingLeft": "1",
+  "paddingRight": "1",
+  "paddingTop": "1",
+}
+`;
+
+exports[`merge expand circular padding with "1px 2px 3px 4px" in given stylesheet 1`] = `
+Object {
+  "paddingBottom": "3px",
+  "paddingLeft": "4px",
+  "paddingRight": "2px",
+  "paddingTop": "1px",
+}
+`;
+
+exports[`merge expand circular padding with "1px 2px 3px" in given stylesheet 1`] = `
+Object {
+  "paddingBottom": "3px",
+  "paddingLeft": "2px",
+  "paddingRight": "2px",
+  "paddingTop": "1px",
+}
+`;
+
+exports[`merge expand circular padding with "1px 2px" in given stylesheet 1`] = `
+Object {
+  "paddingBottom": "1px",
+  "paddingLeft": "2px",
+  "paddingRight": "2px",
+  "paddingTop": "1px",
+}
+`;
+
+exports[`merge expand circular padding with "1px" in given stylesheet 1`] = `
+Object {
+  "paddingBottom": "1px",
+  "paddingLeft": "1px",
+  "paddingRight": "1px",
+  "paddingTop": "1px",
+}
+`;
+
+exports[`merge should expand flex 1`] = `
+Object {
+  "flexBasis": "auto",
+  "flexGrow": "0",
+  "flexShrink": "1",
+}
+`;
+
+exports[`merge should expand flex 2`] = `
+Object {
+  "flexGrow": "1",
+  "flexShrink": "1",
+}
+`;
+
+exports[`merge should merge border properties 1`] = `
+Object {
+  "borderBottomColor": "red",
+  "borderBottomStyle": "solid",
+  "borderBottomWidth": "20px",
+  "borderLeftColor": "yellow",
+  "borderLeftStyle": "dotted",
+  "borderLeftWidth": 5,
+  "borderRightColor": "red",
+  "borderRightStyle": "solid",
+  "borderRightWidth": "30px",
+  "borderTopColor": "red",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "20px",
+}
+`;
+
+exports[`merge should merge flex 1`] = `
+Object {
+  "flexBasis": "auto",
+  "flexGrow": 1,
+  "flexShrink": "1",
+}
+`;
+
+exports[`merge should merge properties 1`] = `
+Object {
+  "paddingBottom": "1px",
+  "paddingLeft": "10px",
+  "paddingRight": "2px",
+  "paddingTop": 20,
+}
+`;
+
+exports[`merge should override defined shorthands for margin 1`] = `
+Object {
+  "marginBottom": "1px",
+  "marginLeft": "2px",
+  "marginRight": "2px",
+  "marginTop": "10px",
+}
+`;
+
+exports[`merge should override defined shorthands for margin 2`] = `
+Object {
+  "marginBottom": "1px",
+  "marginLeft": "2px",
+  "marginRight": "2px",
+  "marginTop": "10px",
+}
+`;
+
+exports[`merge should override defined shorthands for padding 1`] = `
+Object {
+  "paddingBottom": "1px",
+  "paddingLeft": "2px",
+  "paddingRight": "2px",
+  "paddingTop": "10px",
+}
+`;
+
+exports[`merge should override defined shorthands for padding 2`] = `
+Object {
+  "paddingBottom": "1px",
+  "paddingLeft": "2px",
+  "paddingRight": "2px",
+  "paddingTop": "10px",
+}
+`;
+
+exports[`merge should parse a mix of var and calc 1`] = `
+Object {
+  "marginBottom": "calc(100% - var(--foo))",
+  "marginLeft": "10px",
+  "marginRight": "10px",
+  "marginTop": "calc(100% - var(--foo))",
+}
+`;
+
+exports[`merge should parse calc 1`] = `
+Object {
+  "paddingBottom": "calc(100% - 1px)",
+  "paddingLeft": "calc(100% - 1px)",
+  "paddingRight": "calc(100% - 1px)",
+  "paddingTop": "calc(100% - 1px)",
+}
+`;
+
+exports[`merge should parse var 1`] = `
+Object {
+  "paddingBottom": "10px",
+  "paddingLeft": "var(--foo)",
+  "paddingRight": "var(--foo)",
+  "paddingTop": "10px",
+}
+`;
