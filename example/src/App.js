@@ -21,7 +21,7 @@ export default function App() {
   }
 
   return (
-    <div className={styles(globalStyles.container)}>
+    <div className={globalStyles('container')}>
       <h1 className={styles('title', show && 'titleRed')}>Hello World</h1>
       <button onClick={onClick}>Click</button>
     </div>

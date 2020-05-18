@@ -1,14 +1,12 @@
 import warn from './warn';
 
-const noop = () => {};
-
 export default {
   create(schema, error) {
     if (error) {
       if (__DEV__) {
         warn(error);
       }
-      return noop;
+      return () => 'stylemug-error';
     }
 
     const resolver = (...classNames) => {

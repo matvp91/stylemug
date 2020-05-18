@@ -20,7 +20,11 @@ export function createRule(className, { key, value, children, media }) {
 export function extractCss(clearCache = false) {
   const rules = [];
   for (let className in cache) {
-    rules.push(createRule(className, cache[className]));
+    if (typeof cache[className] === 'string') {
+      rules.push(`.${className}{${cache[className]}}`);
+    } else {
+      rules.push(createRule(className, cache[className]));
+    }
   }
   if (clearCache) {
     cache = {};

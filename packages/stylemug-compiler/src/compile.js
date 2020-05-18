@@ -66,6 +66,9 @@ export function compileSchema(schema) {
   const result = {};
 
   for (let key in schema) {
+    if (typeof schema[key] !== 'object') {
+      throw new Error('Schema is not an object.');
+    }
     result[key] = compileSelectors(schema[key], '');
   }
 
