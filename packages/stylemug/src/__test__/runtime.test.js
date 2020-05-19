@@ -1,13 +1,6 @@
 import runtime from '../index';
-import warn from '../warn';
-
-jest.mock('../warn', () => jest.fn());
 
 describe('runtime', () => {
-  beforeEach(() => {
-    warn.mockReset();
-  });
-
   describe('resolver', () => {
     let styles;
 
@@ -40,34 +33,6 @@ describe('runtime', () => {
 
     it('should expose classnames as properties on resolver', () => {
       expect([styles.foo, styles.bar]).toMatchSnapshot();
-    });
-  });
-
-  describe('resolver warnings', () => {
-    it('should warn when a lookup failed', () => {
-      const styles = runtime.create({
-        foo: {
-          color: 'red',
-        },
-      });
-      styles('unknown');
-
-      expect(warn).toHaveBeenCalledWith(
-        'The class name "unknown" does not exist in your stylesheet. Check your stylemug.create({}) definition.'
-      );
-    });
-  });
-
-  describe('compiler warnings', () => {
-    it('should warn if a compiler error is thrown', () => {
-      runtime.create(
-        {
-          mock: true,
-        },
-        'A compiler error occured'
-      );
-
-      expect(warn).toHaveBeenCalledWith('A compiler error occured');
     });
   });
 });
