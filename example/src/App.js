@@ -3,6 +3,7 @@ import stylemug from 'stylemug';
 import { globalStyles } from './globals';
 
 const styles = stylemug.create({
+  foo: 'bar',
   title: {
     fontSize: '31px',
     fontFamily: 'courier',
@@ -10,7 +11,9 @@ const styles = stylemug.create({
   },
   titleRed: {
     color: 'red',
-    '&:hover': 'aaa',
+    '&:hoverr': {
+      color: 'red',
+    },
   },
 });
 

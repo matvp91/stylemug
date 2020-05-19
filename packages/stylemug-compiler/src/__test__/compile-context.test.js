@@ -36,4 +36,17 @@ describe('compile', () => {
 
     expect(reports).toMatchSnapshot();
   });
+
+  it('should report multiple errors', () => {
+    const { reports } = compileSchema({
+      foo: 'bar',
+      default: {
+        '&:iAmAnInvalidPseudoClass': {
+          color: true,
+        },
+      },
+    });
+
+    expect(reports).toMatchSnapshot();
+  });
 });

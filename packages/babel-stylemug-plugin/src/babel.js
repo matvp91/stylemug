@@ -5,9 +5,39 @@ import { compileSchema } from 'stylemug-compiler';
 export function babelPlugin(babel) {
   const t = babel.types;
 
-  function defineError(path, msg) {
+  function wrapReports(path, reports) {
+    if (!Array.isArray(reports)) {
+      reports = [reports];
+    }
+    if (!reports.length) {
+      return;
+    }
+
     const node = t.cloneDeep(path.node);
-    node.arguments[1] = t.stringLiteral(msg);
+    const objectChilds = [
+      t.objectProperty(
+        t.identifier('sourceLinesRange'),
+        t.stringLiteral(
+          'In lines ' + node.loc.start.line + ' to ' + node.loc.end.line
+        )
+      ),
+      t.objectProperty(
+        t.identifier('messages'),
+        t.arrayExpression(
+          reports.map((report) => t.stringLiteral(report.message))
+        )
+      ),
+    ];
+    if (path.hub.file.opts.filename) {
+      objectChilds.push(
+        t.objectProperty(
+          t.identifier('fileName'),
+          t.stringLiteral(path.hub.file.opts.filename || 'unknown')
+        )
+      );
+    }
+
+    node.arguments[1] = t.objectExpression(objectChilds);
     path.replaceWith(node);
   }
 
@@ -34,35 +64,24 @@ export function babelPlugin(babel) {
         references.forEach((reference) => {
           const local = reference.parentPath.parentPath;
 
-          let sheet = evaluateSimple(local.get('arguments')[0]);
+          const sheet = evaluateSimple(local.get('arguments')[0]);
           if (!sheet.confident) {
-            defineError(
-              local,
-              'Failed to evaluate the following stylesheet: \n\n' +
+            wrapReports(local, {
+              message:
+                'Failed to evaluate the following stylesheet: \n\n' +
                 local.toString() +
                 '\n\n' +
-                'Make sure your stylesheet is statically defined.'
-            );
+                'Make sure your stylesheet is statically defined.',
+            });
             return;
           }
 
-          try {
-            sheet = compileSchema(sheet.value);
-          } catch (error) {
-            defineError(
-              local,
-              error && error.$$type === 'compilerError'
-                ? error.message
-                : 'The compiler failed with an unknown error.\n' +
-                    'Would you be so kind to report the following error?\n\n' +
-                    error.toString()
-            );
-            return;
-          }
+          const { result, reports } = compileSchema(sheet.value);
+          wrapReports(local, reports);
 
           const nextLocal = t.cloneDeep(local.node);
           nextLocal.arguments[0] = t.objectExpression(
-            Object.entries(sheet).map(([name, rules]) => {
+            Object.entries(result).map(([name, rules]) => {
               return t.objectProperty(
                 t.identifier(name),
                 t.objectExpression(

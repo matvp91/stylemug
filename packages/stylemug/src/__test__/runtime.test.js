@@ -43,21 +43,6 @@ describe('runtime', () => {
     });
   });
 
-  describe('resolver warnings', () => {
-    it('should warn when a lookup failed', () => {
-      const styles = runtime.create({
-        foo: {
-          color: 'red',
-        },
-      });
-      styles('unknown');
-
-      expect(warn).toHaveBeenCalledWith(
-        'The class name "unknown" does not exist in your stylesheet. Check your stylemug.create({}) definition.'
-      );
-    });
-  });
-
   describe('compiler warnings', () => {
     it('should warn if a compiler error is thrown', () => {
       runtime.create(

@@ -47,3 +47,17 @@ Array [
   },
 ]
 `;
+
+exports[`compile should report multiple errors 1`] = `
+Array [
+  Object {
+    "message": "Classname with key foo is not an object",
+  },
+  Object {
+    "message": "&:iAmAnInvalidPseudoClass is an invalid CSS pseudo class / element",
+  },
+  Object {
+    "message": "Invalid type for color",
+  },
+]
+`;
