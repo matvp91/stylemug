@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`babel plugin - reports should replace create argument 1`] = `
+"\\"use strict\\";
+
+var _stylemug = _interopRequireDefault(require(\\"stylemug\\"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \\"default\\": obj }; }
+
+var styles = _stylemug[\\"default\\"].create({}, {
+  sourceLinesRange: \\"In lines 4 to 4\\",
+  messages: [\\"mockError1\\", \\"mockError2\\"]
+});"
+`;
+
 exports[`babel plugin should error when failed to resolve 1`] = `
 "\\"use strict\\";
 
@@ -13,7 +26,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var styles = _stylemug[\\"default\\"].create(_defineProperty({}, _mock.selector, {
   color: 'red'
-}), \\"Failed to evaluate the following stylesheet: \\\\n\\\\nstylemug.create({\\\\n  [selector]: {\\\\n    color: 'red'\\\\n  }\\\\n})\\\\n\\\\nMake sure your stylesheet is statically defined.\\");"
+}), {
+  sourceLinesRange: \\"In lines 5 to 9\\",
+  messages: [\\"Failed to evaluate the following stylesheet: \\\\n\\\\nstylemug.create({\\\\n  [selector]: {\\\\n    color: 'red'\\\\n  }\\\\n})\\\\n\\\\nMake sure your stylesheet is statically defined.\\"]
+});"
 `;
 
 exports[`babel plugin should replace create argument 1`] = `

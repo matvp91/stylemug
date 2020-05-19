@@ -1,9 +1,15 @@
-const warnings = {};
+export default function warn(error) {
+  let message = 'There are warnings in your stylesheet:\n\n';
 
-export default function warn(str) {
-  if (warnings[warn]) {
-    return;
+  if (error.fileName) {
+    message += error.fileName + '\n';
+    message += '  ' + error.sourceLinesRange;
+    message += '\n\n';
   }
-  warnings[warn] = true;
-  console.warn('[stylemug] ' + str);
+
+  error.messages.forEach((msg, i) => {
+    message += i + 1 + ') ' + msg + '\n';
+  });
+
+  console.warn('[stylemug]', message);
 }

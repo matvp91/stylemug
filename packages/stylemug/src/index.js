@@ -1,14 +1,9 @@
 import warn from './warn';
 
-const noop = () => {};
-
 export default {
   create(schema, error) {
-    if (error) {
-      if (__DEV__) {
-        warn(error);
-      }
-      return noop;
+    if (__DEV__ && error) {
+      warn(error);
     }
 
     const resolver = (...classNames) => {
@@ -24,14 +19,6 @@ export default {
           maps.push(className);
         }
         if (typeof className === 'string') {
-          if (__DEV__ && !schema[className]) {
-            warn(
-              'The class name "' +
-                className +
-                '" does not exist in your stylesheet. Check your ' +
-                'stylemug.create({}) definition.'
-            );
-          }
           maps.push(schema[className]);
         }
       }

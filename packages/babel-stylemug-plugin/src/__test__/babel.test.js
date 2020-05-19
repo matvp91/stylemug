@@ -1,17 +1,25 @@
 import { transform } from '@babel/core';
+import { compileSchema } from 'stylemug-compiler';
 import { babelPlugin as plugin } from '../babel';
 
 jest.mock('stylemug-compiler', () => ({
-  compileSchema: () => ({
-    className: {
-      hash: {
-        keyId: 'id',
-      },
-    },
-  }),
+  compileSchema: jest.fn(),
 }));
 
 describe('babel plugin', () => {
+  beforeEach(() => {
+    compileSchema.mockImplementationOnce(() => ({
+      result: {
+        className: {
+          hash: {
+            keyId: 'id',
+          },
+        },
+      },
+      reports: [],
+    }));
+  });
+
   it('should replace create argument', () => {
     const example = `
       import stylemug from 'stylemug';
@@ -64,6 +72,27 @@ describe('babel plugin', () => {
           color: 'blue',
         },
       });
+    `;
+
+    const { code } = transform(example, {
+      plugins: [plugin],
+    });
+
+    expect(code).toMatchSnapshot();
+  });
+});
+
+describe('babel plugin - reports', () => {
+  it('should replace create argument', () => {
+    compileSchema.mockImplementationOnce(() => ({
+      result: {},
+      reports: [{ message: 'mockError1' }, { message: 'mockError2' }],
+    }));
+
+    const example = `
+      import stylemug from 'stylemug';
+
+      const styles = stylemug.create({});
     `;
 
     const { code } = transform(example, {

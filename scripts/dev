@@ -7,7 +7,7 @@ spawn('scripts/build', {
   stdio: 'inherit',
 });
 
-spawn('yarn', ['start'], {
+spawn('yarn', ['build'], {
   stdio: 'inherit',
   cwd: path.resolve('./example'),
 });
