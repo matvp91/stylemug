@@ -2,7 +2,7 @@ import { compileSchema, compileSelectors } from '../compile';
 
 describe('compile', () => {
   it('should compile schema', () => {
-    const result = compileSchema({
+    const { result } = compileSchema({
       default: {
         color: 'red',
         backgroundColor: 'yellow',
@@ -18,16 +18,8 @@ describe('compile', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('should compile selectors with number as value', () => {
-    const result = compileSelectors({
-      fontSize: 12,
-    });
-
-    expect(result).toMatchSnapshot();
-  });
-
   it('should compile nested selectors', () => {
-    const result = compileSchema({
+    const { result } = compileSchema({
       default: {
         color: 'red',
 
@@ -41,7 +33,7 @@ describe('compile', () => {
   });
 
   it('should compile nested media query', () => {
-    const result = compileSchema({
+    const { result } = compileSchema({
       default: {
         color: 'red',
 
@@ -51,6 +43,13 @@ describe('compile', () => {
       },
     });
 
+    expect(result).toMatchSnapshot();
+  });
+
+  it('should compile selectors with number as value', () => {
+    const result = compileSelectors({
+      fontSize: 12,
+    });
     expect(result).toMatchSnapshot();
   });
 });

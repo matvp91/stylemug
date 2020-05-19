@@ -1,6 +1,8 @@
 import fnv1a from 'fnv1a';
 import { save as extractorSave } from './extractor';
 import { extractShorthands } from './shorthands';
+import { createContext } from './context';
+import { PseudoClasses, PseudoElements } from './static';
 
 function hash(str) {
   let hash = fnv1a(str).toString(16);
@@ -9,14 +11,7 @@ function hash(str) {
   return `${prepend}${hash}`;
 }
 
-function throwError(message) {
-  throw {
-    $$type: 'compilerError',
-    message: message,
-  };
-}
-
-export function compileSelectors(selectors, children, media) {
+export function compileSelectors(selectors, children, media, context) {
   let result = {};
 
   selectors = extractShorthands(selectors);
@@ -25,20 +20,32 @@ export function compileSelectors(selectors, children, media) {
     const value = selectors[key];
 
     switch (typeof value) {
+      default:
+        context.report('Invalid type for ' + key);
+        continue;
+
       case 'object':
         // @media
         if (/^@/.test(key)) {
           result = Object.assign(
             result,
-            compileSelectors(value, children, key)
+            compileSelectors(value, children, key, context)
           );
         }
         // &:focus
         else {
           const child = key.replace(/&/g, '');
+
+          if (
+            !PseudoClasses.includes(child) &&
+            !PseudoElements.includes(child)
+          ) {
+            context.report(key + ' is an invalid CSS pseudo class / element');
+          }
+
           result = Object.assign(
             result,
-            compileSelectors(value, children + child, media)
+            compileSelectors(value, children + child, media, context)
           );
         }
         continue;
@@ -71,18 +78,16 @@ export function compileSelectors(selectors, children, media) {
 
 export function compileSchema(schema) {
   const result = {};
+  const context = createContext();
 
   for (let key in schema) {
     if (typeof schema[key] !== 'object') {
-      throwError(
-        'Invalid schema. Expected className ' +
-          key +
-          ' to be object, but got ' +
-          typeof schema[key]
-      );
+      context.report('Classname with key ' + key + ' is not an object');
+      continue;
     }
-    result[key] = compileSelectors(schema[key], '');
+
+    result[key] = compileSelectors(schema[key], '', undefined, context);
   }
 
-  return result;
+  return { result, reports: context.getReports() };
 }
