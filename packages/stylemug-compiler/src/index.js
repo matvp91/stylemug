@@ -1,3 +1,3 @@
 export { compileSchema } from './compile';
 
-export { extractCss } from './extractor';
+export { extractCss, save } from './extractor';
