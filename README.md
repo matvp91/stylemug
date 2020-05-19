@@ -121,7 +121,7 @@ const styles = stylemug.create({
     },
 
     // media queries
-    '@media (min-width: 720px': {
+    '@media (min-width: 720px)': {
       width: '100px',
     },
   },
